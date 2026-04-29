@@ -1,4 +1,8 @@
 package com.example;
+
+import com.example.modelo.Casa;
+import com.example.modelo.Persona;
+import com.example.modelo.Residencia;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
