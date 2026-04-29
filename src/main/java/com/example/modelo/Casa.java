@@ -8,12 +8,13 @@ public class Casa {
 
     public static final int NUM_HABITACIONES = 6;
 
-    private String nombre;                 // "WG1", "WG2"...
+    private String nombre;                 // Seguira la nomenclatura "WG1", "WG2"...
+    // Cada casa tiene lista de 6 habitaciones, que pueden estar ocupadas o libres
     private List<Habitacion> habitaciones;
-
+//constructor vacio para que Gson pueda crear objetos
     public Casa() {
     }
-
+//constructor con nombre para crear casas nuevas, que ya nacen con sus 6 habitaciones vacías
     public Casa(String nombre) {
         this.nombre = nombre;
         this.habitaciones = new ArrayList<>();
@@ -29,7 +30,7 @@ public class Casa {
     public List<Habitacion> getHabitaciones() { return habitaciones; }
     public void setHabitaciones(List<Habitacion> habitaciones) { this.habitaciones = habitaciones; }
 
-    // Métodos de conveniencia
+    // Métodos de conveniencia para buscar habitación por número y contar ocupadas
     public Habitacion getHabitacion(int numero) {
         for (Habitacion h : habitaciones) {
             if (h.getNumero() == numero) {
@@ -38,7 +39,7 @@ public class Casa {
         }
         return null;
     }
-
+// Cuenta cuántas habitaciones están ocupadas
     public int contarOcupadas() {
         int n = 0;
         for (Habitacion h : habitaciones) {

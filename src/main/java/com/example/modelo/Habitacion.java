@@ -3,16 +3,16 @@ package com.example.modelo;
 public class Habitacion {
 
     private int numero;       // 1 a 6
-    private Persona persona;  // null si está libre
-
+    private Persona persona;  // puede ser null si está libre
+//constructor vacio para que Gson pueda crear objetos
     public Habitacion() {
     }
-
+//constructor con numero y persona para crear habitaciones disponibles
     public Habitacion(int numero) {
         this.numero = numero;
         this.persona = null;
     }
-
+//constructor con numero y persona para crear habitaciones ocupadas
     public Habitacion(int numero, Persona persona) {
         this.numero = numero;
         this.persona = persona;

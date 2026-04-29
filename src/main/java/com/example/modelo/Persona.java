@@ -8,7 +8,7 @@ public class Persona {
     private String email;
     private String estudiosEnCurso;
 
-    // Constructor vacío: imprescindible para que Gson pueda crear objetos
+    // Constructor vacío para que Gson pueda crear objetos
     public Persona() {
     }
 

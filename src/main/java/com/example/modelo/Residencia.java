@@ -15,7 +15,7 @@ public class Residencia {
     public Residencia() {
         this.casas = new ArrayList<>();
     }
-
+//constructor con todos los datos para crear una residencia nueva, que ya nace sin casas
     public Residencia(String nombre, String direccion, String cursoAcademico) {
         this.nombre = nombre;
         this.direccion = direccion;
@@ -35,7 +35,7 @@ public class Residencia {
     public List<Casa> getCasas() { return casas; }
     public void setCasas(List<Casa> casas) { this.casas = casas; }
 
-    // Métodos de conveniencia
+    // Métodos para buscar casa por nombre
     public Casa getCasa(String nombreCasa) {
         for (Casa c : casas) {
             if (c.getNombre().equalsIgnoreCase(nombreCasa)) {
