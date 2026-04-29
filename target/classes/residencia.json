@@ -29,15 +29,7 @@
           }
         },
         {
-          "numero": 3,
-          "persona": {
-            "nombre": "Sara",
-            "apellidos": "López Díaz",
-            "dni": "34567890C",
-            "telefono": "634567890",
-            "email": "sara.lopez@email.com",
-            "estudiosEnCurso": "Grado en ADE"
-          }
+          "numero": 3
         },
         {
           "numero": 4,
@@ -53,7 +45,7 @@
         {
           "numero": 5,
           "persona": {
-            "nombre": "Elena",
+            "nombre": "Elena Cambiado",
             "apellidos": "Rodríguez Gil",
             "dni": "56789012E",
             "telefono": "656789012",
@@ -62,8 +54,7 @@
           }
         },
         {
-          "numero": 6,
-          "persona": null
+          "numero": 6
         }
       ]
     },
@@ -81,13 +72,38 @@
             "estudiosEnCurso": "Grado en Derecho"
           }
         },
-        { "numero": 2, "persona": null },
-        { "numero": 3, "persona": null },
-        { "numero": 4, "persona": null },
-        { "numero": 5, "persona": null },
-        { "numero": 6, "persona": null }
+        {
+          "numero": 2,
+          "persona": {
+            "nombre": "Juana",
+            "apellidos": "Ipiales",
+            "dni": "34567890C",
+            "telefono": "677282856",
+            "email": "juana.ipiales@gmail.com",
+            "estudiosEnCurso": "Grado superior en Artes escenicas"
+          }
+        },
+        {
+          "numero": 3
+        },
+        {
+          "numero": 4
+        },
+        {
+          "numero": 5,
+          "persona": {
+            "nombre": "Manuel",
+            "apellidos": "Sánchez Sanchez",
+            "dni": "67220123F",
+            "telefono": "667000123",
+            "email": "mauel@email.com",
+            "estudiosEnCurso": "Grado en Fisioterapia"
+          }
+        },
+        {
+          "numero": 6
+        }
       ]
     }
   ]
 }
-

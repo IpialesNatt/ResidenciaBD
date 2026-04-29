@@ -11,7 +11,6 @@ public class ResidenciaService {
     private JsonRepository repositorio = new JsonRepository();
     private Residencia residencia;
 
-    // Al crear el servicio, carga los datos del JSON
     public ResidenciaService() {
         residencia = repositorio.cargar();
     }
@@ -21,16 +20,24 @@ public class ResidenciaService {
     }
 
     // AÑADIR: asigna una persona a una habitación libre
-    public boolean añadirPersona(String nombreCasa, int numeroHabitacion, Persona persona) {
+    // Devuelve null si todo va bien, o un mensaje de error si algo falla
+    public String añadirPersona(String nombreCasa, int numeroHabitacion, Persona persona) {
+        // Comprobar que el DNI no existe ya en la residencia
+        if (buscarPorDni(persona.getDni()) != null) {
+            return "Ya existe un residente con el DNI " + persona.getDni() + ".";
+        }
+
         Casa casa = residencia.getCasa(nombreCasa);
-        if (casa == null) return false;
+        if (casa == null) return "No existe la casa " + nombreCasa + ".";
 
         Habitacion habitacion = casa.getHabitacion(numeroHabitacion);
-        if (habitacion == null || !habitacion.estaLibre()) return false;
+        if (habitacion == null || !habitacion.estaLibre()) {
+            return "La habitación " + numeroHabitacion + " ya está ocupada o no existe.";
+        }
 
         habitacion.setPersona(persona);
         repositorio.guardar(residencia);
-        return true;
+        return null; // null = éxito
     }
 
     // ELIMINAR: libera una habitación quitando la persona
@@ -46,25 +53,72 @@ public class ResidenciaService {
         return true;
     }
 
-    // MODIFICAR: reemplaza la persona de una habitación por otra
-    public boolean modificarPersona(String nombreCasa, int numeroHabitacion, Persona personaNueva) {
-        Casa casa = residencia.getCasa(nombreCasa);
-        if (casa == null) return false;
+    // MODIFICAR: actualiza los datos de un residente y lo mueve si cambia de habitación
+    // dniOriginal: el DNI con el que se encontró al residente (para localizarlo)
+    // nuevaCasa / nuevaHabitacion: destino elegido en los combos
+    // personaNueva: los datos del formulario
+    public String modificarPersona(String dniOriginal, String nuevaCasa, int nuevaHabitacion, Persona personaNueva) {
+        // Buscar dónde está actualmente el residente
+        Habitacion habitacionActual = null;
+        for (Casa c : residencia.getCasas()) {
+            for (Habitacion h : c.getHabitaciones()) {
+                if (!h.estaLibre() && h.getPersona().getDni().equals(dniOriginal)) {
+                    habitacionActual = h;
+                }
+            }
+        }
+        if (habitacionActual == null) {
+            return "No se encontró el residente con DNI " + dniOriginal + ".";
+        }
 
-        Habitacion habitacion = casa.getHabitacion(numeroHabitacion);
-        if (habitacion == null) return false;
+        // Si el DNI cambia, comprobar que el nuevo no está ya en uso
+        if (!dniOriginal.equals(personaNueva.getDni()) && buscarPorDni(personaNueva.getDni()) != null) {
+            return "Ya existe un residente con el DNI " + personaNueva.getDni() + ".";
+        }
 
-        habitacion.setPersona(personaNueva);
+        // Buscar la habitación destino
+        Casa casaDestino = residencia.getCasa(nuevaCasa);
+        if (casaDestino == null) return "No existe la casa " + nuevaCasa + ".";
+        Habitacion habitacionDestino = casaDestino.getHabitacion(nuevaHabitacion);
+        if (habitacionDestino == null) return "No existe la habitación " + nuevaHabitacion + ".";
+
+        // Si es la misma habitación, solo actualizar los datos
+        if (habitacionActual == habitacionDestino) {
+            habitacionActual.setPersona(personaNueva);
+            repositorio.guardar(residencia);
+            return null;
+        }
+
+        // Si es distinta habitación, la destino debe estar libre
+        if (!habitacionDestino.estaLibre()) {
+            return "La habitación " + nuevaHabitacion + " de " + nuevaCasa + " ya está ocupada.";
+        }
+
+        // Mover: liberar la original y ocupar la nueva
+        habitacionActual.liberar();
+        habitacionDestino.setPersona(personaNueva);
         repositorio.guardar(residencia);
-        return true;
+        return null; // null = éxito
     }
 
-    // BUSCAR: devuelve la habitación donde está la persona con ese DNI, o null si no existe
+    // BUSCAR: devuelve la habitación donde está la persona con ese DNI
     public Habitacion buscarPorDni(String dni) {
         for (Casa casa : residencia.getCasas()) {
             for (Habitacion habitacion : casa.getHabitaciones()) {
                 if (!habitacion.estaLibre() && habitacion.getPersona().getDni().equals(dni)) {
                     return habitacion;
+                }
+            }
+        }
+        return null;
+    }
+
+    // BUSCAR CASA: devuelve el nombre de la casa donde vive esa persona
+    public String getCasaDeDni(String dni) {
+        for (Casa casa : residencia.getCasas()) {
+            for (Habitacion habitacion : casa.getHabitaciones()) {
+                if (!habitacion.estaLibre() && habitacion.getPersona().getDni().equals(dni)) {
+                    return casa.getNombre();
                 }
             }
         }
