@@ -53,10 +53,7 @@ public class ResidenciaService {
         return true;
     }
 
-    // MODIFICAR: actualiza los datos de un residente y lo mueve si cambia de habitación
-    // dniOriginal: el DNI con el que se encontró al residente (para localizarlo)
-    // nuevaCasa / nuevaHabitacion: destino elegido en los combos
-    // personaNueva: los datos del formulario
+
     public String modificarPersona(String dniOriginal, String nuevaCasa, int nuevaHabitacion, Persona personaNueva) {
         // Buscar dónde está actualmente el residente
         Habitacion habitacionActual = null;

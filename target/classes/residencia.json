@@ -7,15 +7,7 @@
       "nombre": "WG1",
       "habitaciones": [
         {
-          "numero": 1,
-          "persona": {
-            "nombre": "Lucía",
-            "apellidos": "García Pérez",
-            "dni": "12345678A",
-            "telefono": "612345678",
-            "email": "lucia.garcia@email.com",
-            "estudiosEnCurso": "Grado en Informática"
-          }
+          "numero": 1
         },
         {
           "numero": 2,
@@ -29,7 +21,15 @@
           }
         },
         {
-          "numero": 3
+          "numero": 3,
+          "persona": {
+            "nombre": "Jose Carlos",
+            "apellidos": "Sanchez Garcia",
+            "dni": "89897867O",
+            "telefono": "678564534",
+            "email": "jc.sanchez@gmail.com",
+            "estudiosEnCurso": "Grado en ADE"
+          }
         },
         {
           "numero": 4,
@@ -43,18 +43,18 @@
           }
         },
         {
-          "numero": 5,
-          "persona": {
-            "nombre": "Elena Cambiado",
-            "apellidos": "Rodríguez Gil",
-            "dni": "56789012E",
-            "telefono": "656789012",
-            "email": "elena.rodriguez@email.com",
-            "estudiosEnCurso": "Grado en Psicología"
-          }
+          "numero": 5
         },
         {
-          "numero": 6
+          "numero": 6,
+          "persona": {
+            "nombre": "Sofia",
+            "apellidos": "Vergara",
+            "dni": "48780978K",
+            "telefono": "789878786",
+            "email": "sofia.vergara@gmail.com",
+            "estudiosEnCurso": "Grado en turismo"
+          }
         }
       ]
     },
@@ -73,15 +73,7 @@
           }
         },
         {
-          "numero": 2,
-          "persona": {
-            "nombre": "Juana",
-            "apellidos": "Ipiales",
-            "dni": "34567890C",
-            "telefono": "677282856",
-            "email": "juana.ipiales@gmail.com",
-            "estudiosEnCurso": "Grado superior en Artes escenicas"
-          }
+          "numero": 2
         },
         {
           "numero": 3
@@ -92,12 +84,12 @@
         {
           "numero": 5,
           "persona": {
-            "nombre": "Manuel",
-            "apellidos": "Sánchez Sanchez",
-            "dni": "67220123F",
-            "telefono": "667000123",
-            "email": "mauel@email.com",
-            "estudiosEnCurso": "Grado en Fisioterapia"
+            "nombre": "Elena",
+            "apellidos": "Rodríguez Fernandez",
+            "dni": "56789012E",
+            "telefono": "656789012",
+            "email": "elena.rodriguez@email.com",
+            "estudiosEnCurso": "Grado en Psicología"
           }
         },
         {

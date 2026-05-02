@@ -9,5 +9,5 @@ public class Main {
         SwingUtilities.invokeLater(() -> new VentanaPrincipal());
     }
 
-    // IA utilizada: Claude (claude.ai) — revisión de imports, estructura de capas y código de la vista.
+    // IA utilizada: Claude (claude.ai) — logica de la implementacion de habitacion ocupada y código de la vista.
 }
