@@ -1,11 +1,10 @@
 package com.example.modelo;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Residencia {
 
-    public static final int MAX_CASAS = 5;
+    public static final int MAX_CASAS = 6;
 
     private String nombre;
     private String direccion;
@@ -15,14 +14,17 @@ public class Residencia {
     public Residencia() {
         this.casas = new ArrayList<>();
     }
-//constructor con todos los datos para crear una residencia nueva, que ya nace sin casas
-    public Residencia(String nombre, String direccion, String cursoAcademico) {
+
+public Residencia(String nombre, String direccion, String cursoAcademico) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.cursoAcademico = cursoAcademico;
         this.casas = new ArrayList<>();
+        for (int i = 1; i <= MAX_CASAS; i++) {
+        this.casas.add(new Casa("WG" + i));
     }
-
+    }
+    // Getters y setters
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
 

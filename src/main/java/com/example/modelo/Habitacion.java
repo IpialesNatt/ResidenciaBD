@@ -4,15 +4,17 @@ public class Habitacion {
 
     private int numero;       // 1 a 6
     private Persona persona;  // puede ser null si está libre
-//constructor vacio para que Gson pueda crear objetos
+
+    //constructor vacio para que Gson pueda crear objetos
     public Habitacion() {
     }
-//constructor con numero y persona para crear habitaciones disponibles
+
+    //constructor con numero y persona para crear habitaciones disponibles
     public Habitacion(int numero) {
         this.numero = numero;
         this.persona = null;
     }
-//constructor con numero y persona para crear habitaciones ocupadas
+    //constructor con numero y persona para crear habitaciones ocupadas
     public Habitacion(int numero, Persona persona) {
         this.numero = numero;
         this.persona = persona;
@@ -24,19 +26,19 @@ public class Habitacion {
     public Persona getPersona() { return persona; }
     public void setPersona(Persona persona) { this.persona = persona; }
 
-    // Métodos de conveniencia
+    // Métodos de logica de negocio
     public boolean estaLibre() {
-        return persona == null;
+        return persona == null; // si persona es null, la habitación está libre. Si persona no es null, la habitación está ocupada.
     }
 
     public void liberar() {
-        this.persona = null;
+        this.persona = null; 
     }
 
     @Override
     public String toString() {
         return "Habitación " + numero + " - " +
-                (estaLibre() ? "[libre]" : persona.toString());
+                (estaLibre() ? "[disponible]" : persona.toString());
     }
 }
 

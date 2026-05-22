@@ -6,6 +6,7 @@ import com.example.modelo.Persona;
 import com.example.modelo.Residencia;
 import com.example.persistencia.JsonRepository;
 
+// La clase de servicio es la que contiene la lógica de negocio de la residencia
 public class ResidenciaService {
 
     private JsonRepository repositorio = new JsonRepository();
@@ -22,9 +23,10 @@ public class ResidenciaService {
     // AÑADIR: asigna una persona a una habitación libre
     // Devuelve null si todo va bien, o un mensaje de error si algo falla
     public String añadirPersona(String nombreCasa, int numeroHabitacion, Persona persona) {
+       
         // Comprobar que el DNI no existe ya en la residencia
         if (buscarPorDni(persona.getDni()) != null) {
-            return "Ya existe un residente con el DNI " + persona.getDni() + ".";
+            return "Ya existe un studiante con el DNI " + persona.getDni() + ".";
         }
 
         Casa casa = residencia.getCasa(nombreCasa);
