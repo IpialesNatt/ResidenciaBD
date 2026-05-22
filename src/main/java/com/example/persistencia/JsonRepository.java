@@ -43,7 +43,7 @@ private File obtenerArchivo() {
         }
     }
 
-    // Convierte el objeto Residencia en JSON y lo guarda en el archivo
+    // Convierte el objeto Residencia en JSON y lo guarda 
     public void guardar(Residencia residencia) {
         try {
             FileWriter escritor = new FileWriter(obtenerArchivo());
