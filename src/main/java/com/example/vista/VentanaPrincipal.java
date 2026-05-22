@@ -271,6 +271,7 @@ public class VentanaPrincipal extends JFrame {
         campoEmail.setText("");
         campoEstudios.setText("");
         dniEncontrado = null; // olvidar la búsqueda activa
+
     }
 
     // -----------------------------------------------------------------------------------------------

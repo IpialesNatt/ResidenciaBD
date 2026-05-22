@@ -112,6 +112,9 @@ public class ResidenciaService {
         return null;
     }
 
+    //buscar por nombre
+    
+
     // BUSCAR CASA: devuelve el nombre de la casa donde vive esa persona
     public String getCasaDeDni(String dni) {
         for (Casa casa : residencia.getCasas()) {
